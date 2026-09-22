@@ -1,83 +1,57 @@
 # Machine Learning Learning Repository
 
-This repository documents my progress learning the core concepts, techniques, and models used in machine learning.
+This repository tracks my progress as I learn the main ideas, techniques, and models used in machine learning.
 
-The main goal is to develop both an understanding of how common ML methods work and practical experience applying them to real datasets using Python and scikit-learn.
+The aim is to build a solid understanding of the fundamentals, then apply them through small projects using Python, pandas, scikit-learn, and related tools.
 
-## Core Machine Learning Workflow
-
-Most projects in this repository follow the same general workflow:
-
-1. **Understand the problem**
-
-   * Identify the target variable
-   * Determine whether the problem is classification, regression, clustering, etc.
-   * Choose appropriate evaluation metrics
-
-2. **Explore the data**
-
-   * Inspect distributions and summary statistics
-   * Identify missing values and outliers
-   * Examine relationships between features and the target
-   * Visualise important patterns
-
-3. **Prepare the data**
-
-   * Train/test splitting
-   * Missing-value imputation
-   * Categorical encoding
-   * Feature scaling
-   * Feature engineering
-   * Handling class imbalance where necessary
-
-4. **Build baseline models**
-
-   * Start with a simple model
-   * Establish a benchmark before increasing model complexity
-
-5. **Train and compare models**
-
-   * Fit several appropriate algorithms
-   * Compare performance using cross-validation
-   * Examine underfitting and overfitting
-
-6. **Tune the model**
-
-   * Hyperparameter optimisation
-   * `GridSearchCV`
-   * `RandomizedSearchCV`
-
-7. **Evaluate the final model**
-
-   * Evaluate once on the held-out test set
-   * Analyse prediction errors
-   * Interpret model performance and limitations
+Rather than trying to learn every model at once, I’m working through the topics below roughly in order.
 
 ---
 
-## Essential Techniques
+## 1. Machine Learning Basics
 
-### Data Preprocessing
+Start with the general ideas that apply to almost every ML problem.
 
-Important preprocessing techniques include:
+Topics to understand:
+
+* Supervised vs unsupervised learning
+* Classification vs regression
+* Features and target variables
+* Training, validation, and test sets
+* Overfitting and underfitting
+* Generalisation
+* Bias-variance trade-off
+* Model parameters vs hyperparameters
+* Data leakage
+* Reproducibility
+
+The main goal here is to understand how a machine learning project should be structured before worrying too much about individual models.
+
+---
+
+## 2. Data Preparation
+
+Before training models, I want to be comfortable preparing real datasets.
+
+Topics to practise:
 
 * Train/test splitting
 * Stratified sampling
-* Missing-value imputation
+* Handling missing values
 * Standardisation and normalisation
 * One-hot encoding
 * Ordinal encoding
-* Feature transformations
+* Handling categorical variables
 * Outlier detection
-* Feature engineering
-* Data pipelines
+* Basic feature engineering
+* Using pipelines
 
-Useful scikit-learn tools include:
+Useful scikit-learn tools:
 
 ```python
 train_test_split
-StandardScaler
 SimpleImputer
+StandardScaler
 OneHotEncoder
 OrdinalEncoder
 ColumnTransformer
@@ -86,11 +60,11 @@ Pipeline
 
 ---
 
-## Regression
+## 3. Regression
 
-Regression models predict continuous values.
+Regression models are used when the target is a continuous value.
 
-Models to understand:
+Models to learn:
 
 * Linear Regression
 * Polynomial Regression
@@ -99,26 +73,27 @@ Models to understand:
 * Elastic Net
 * Decision Tree Regression
 * Random Forest Regression
-* Gradient Boosting
-* XGBoost / similar boosting methods
+* Gradient Boosting Regression
 
-Important concepts:
+Main concepts:
 
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-* Mean Absolute Error (MAE)
+* Mean Squared Error
+* Root Mean Squared Error
+* Mean Absolute Error
 * R²
 * Residual analysis
 * Regularisation
-* Bias-variance trade-off
+* Overfitting in regression models
+
+I want to start with linear models before moving on to tree-based and ensemble methods.
 
 ---
 
-## Classification
+## 4. Classification
 
-Classification models predict discrete classes.
+Classification models predict categories or classes.
 
-Models to understand:
+Models to learn:
 
 * Logistic Regression
 * k-Nearest Neighbours
@@ -127,9 +102,8 @@ Models to understand:
 * Decision Trees
 * Random Forests
 * Gradient Boosting
-* Neural Networks
 
-Important evaluation methods include:
+Evaluation methods:
 
 * Accuracy
 * Precision
@@ -138,41 +112,53 @@ Important evaluation methods include:
 * Confusion matrix
 * ROC curve
 * ROC-AUC
-* Precision-recall curves
+* Precision-recall curve
 
-For multiclass problems, it is also useful to understand:
+For multiclass problems, I also want to understand:
 
 * One-vs-Rest
 * One-vs-One
-* Macro, micro and weighted averaging
+* Macro averaging
+* Micro averaging
+* Weighted averaging
 
 ---
 
-## Decision Trees and Ensemble Methods
+## 5. Decision Trees and Ensemble Methods
 
-Important topics include:
+Once I am comfortable with basic regression and classification, I want to spend more time on tree-based models.
 
-* Decision tree splitting
+Topics to learn:
+
+* How decision trees choose splits
 * Gini impurity
 * Entropy
 * Information gain
-* Tree depth and pruning
+* Tree depth
+* Overfitting and pruning
 * Bagging
 * Random forests
 * Boosting
 * Gradient boosting
 
-These methods are particularly useful for understanding the difference between individual weak models and ensembles of models.
+These methods are useful because they introduce many of the ideas behind modern ensemble models.
 
 ---
 
-## Model Selection
+## 6. Model Evaluation and Selection
 
-Important techniques include:
+The next step is learning how to compare models properly.
 
-### Cross-Validation
+Topics:
 
-Use cross-validation to estimate how well a model is likely to generalise to unseen data.
+* Cross-validation
+* Choosing suitable evaluation metrics
+* Comparing training and validation performance
+* Learning curves
+* Detecting overfitting
+* Error analysis
+
+Useful scikit-learn tools:
 
 ```python
 cross_val_score
@@ -180,68 +166,92 @@ cross_validate
 cross_val_predict
 ```
 
-### Hyperparameter Tuning
+---
 
-Common tools include:
+## 7. Hyperparameter Tuning
+
+After choosing a reasonable model, I want to learn how to tune it without overfitting to the test set.
+
+Main tools:
 
 ```python
 GridSearchCV
 RandomizedSearchCV
 ```
 
-Model selection should generally be performed using the training data. The test set should be reserved for final evaluation.
+Topics to understand:
+
+* Parameter grids
+* Cross-validation during tuning
+* Choosing a scoring metric
+* Inspecting validation results
+* Selecting the best model
+* Keeping the test set separate until final evaluation
 
 ---
 
-## Feature Selection and Engineering
+## 8. Feature Engineering and Feature Selection
 
-Useful techniques include:
+Once the basic workflow is familiar, I want to focus more on improving the input data.
 
+Topics:
+
+* Creating useful new features
+* Transforming existing features
+* Removing unnecessary features
 * Correlation analysis
-* Creating derived features
-* Removing irrelevant features
 * Feature importance
 * Recursive feature elimination
 * Regularisation-based feature selection
-* Dimensionality reduction
 
-Good feature engineering can sometimes improve performance more than changing the model itself.
+The goal here is to understand how better features can sometimes improve a model more than simply choosing a more complicated algorithm.
 
 ---
 
-## Dimensionality Reduction
+## 9. Dimensionality Reduction
 
-Important techniques include:
+For datasets with many features, I want to learn methods for reducing the number of dimensions.
 
-* Principal Component Analysis (PCA)
+Main topics:
+
+* Principal Component Analysis
 * Explained variance
-* Feature projection
+* Choosing the number of components
 * Visualising high-dimensional data
 
-PCA is particularly useful for understanding how high-dimensional datasets such as image data can be represented using fewer variables.
+Main method to learn:
+
+* PCA
+
+Later I may also explore:
+
+* t-SNE
+* UMAP
 
 ---
 
-## Unsupervised Learning
+## 10. Unsupervised Learning
 
-Unlike supervised learning, unsupervised methods do not require labelled target data.
-
-Important techniques include:
+After supervised learning, I want to cover the main unsupervised learning techniques.
 
 ### Clustering
+
+Methods to learn:
 
 * k-Means
 * Hierarchical clustering
 * DBSCAN
 
-Important concepts:
+Concepts to understand:
 
 * Choosing the number of clusters
 * Inertia
 * Silhouette score
-* Cluster interpretation
+* Interpreting clusters
 
 ### Dimensionality Reduction
+
+Methods:
 
 * PCA
 * t-SNE
@@ -249,51 +259,52 @@ Important concepts:
 
 ---
 
-## Neural Networks
+## 11. Neural Networks
 
-Core concepts to understand include:
+Once I am comfortable with traditional machine learning, I want to move on to neural networks.
+
+Start with:
 
 * Artificial neurons
 * Layers
 * Activation functions
-* Forward propagation
 * Loss functions
+* Forward propagation
 * Backpropagation
 * Gradient descent
 * Learning rate
 * Batch size
 * Epochs
 
-Important architectures include:
+Then move on to:
 
-* Multilayer Perceptrons (MLPs)
-* Convolutional Neural Networks (CNNs)
-* Recurrent Neural Networks (RNNs)
+* Multilayer Perceptrons
+* Convolutional Neural Networks
+* Recurrent Neural Networks
 * Transformers
 
-The initial focus is on understanding basic feed-forward neural networks before moving to more specialised architectures.
+The priority is to understand simple feed-forward neural networks first before moving on to more specialised architectures.
 
 ---
 
-## General ML Concepts
+## 12. Machine Learning Workflow
 
-Some concepts apply across almost every machine learning problem:
+For most projects, I want to follow roughly the same structure:
 
-* Training, validation and test sets
-* Generalisation
-* Overfitting and underfitting
-* Bias-variance trade-off
-* Data leakage
-* Feature scaling
-* Regularisation
-* Hyperparameters vs model parameters
-* Cross-validation
-* Learning curves
-* Model interpretability
-* Reproducibility
-* Error analysis
+1. Understand the problem
+2. Load and inspect the data
+3. Perform exploratory data analysis
+4. Clean and prepare the data
+5. Split into training and test sets
+6. Build a simple baseline model
+7. Train several suitable models
+8. Compare them using cross-validation
+9. Tune the strongest candidates
+10. Evaluate the final model on the test set
+11. Analyse errors and limitations
+12. Summarise the results
 
-Understanding these ideas is generally more important than memorising large numbers of algorithms.
+Using a consistent workflow should make it easier to compare projects and build good habits.
 
 ---
 
@@ -308,7 +319,7 @@ The main tools used throughout this repository are:
 * scikit-learn
 * Jupyter Notebook
 
-Additional libraries may be introduced for more advanced projects, including:
+Later projects may also use:
 
 * XGBoost
 * TensorFlow / Keras
@@ -316,15 +327,19 @@ Additional libraries may be introduced for more advanced projects, including:
 
 ---
 
-## Repository Goal
+## Current Goal
 
-The aim is not simply to train models with high accuracy, but to understand:
+The main aim of this repository is not to memorise as many algorithms as possible.
 
-* **why a model works**
-* **when it should be used**
-* **how to evaluate it correctly**
-* **how to diagnose problems**
-* **how to improve its performance**
-* **how well it generalises to unseen data**
+Instead, I want to be able to:
 
-Each project provides an opportunity to apply these ideas to a practical machine learning problem.
+* understand how the main models work
+* know when to use them
+* prepare data correctly
+* evaluate models properly
+* recognise overfitting and data leakage
+* tune models effectively
+* interpret results
+* apply the full ML workflow to new datasets
+
+The projects in this repository will gradually build up these skills.
